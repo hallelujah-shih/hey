@@ -17,7 +17,7 @@ To preserve the name for its original owner, we renamed this project to hey.
 
 ## Installation
 
-    go get -u github.com/rakyll/hey
+    go get -u github.com/hallelujah-shih/hey
 
 ## Usage
 
@@ -48,6 +48,7 @@ Options:
   -a  Basic authentication, username:password.
   -x  HTTP Proxy address as host:port.
   -h2 Enable HTTP/2.
+  -nss_log_path log tls pre-master key
 
   -host	HTTP Host header.
 

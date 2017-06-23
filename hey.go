@@ -55,7 +55,7 @@ var (
 	h2 = flag.Bool("h2", false, "")
 
 	cpus       = flag.Int("cpus", runtime.GOMAXPROCS(-1), "")
-	nssLogFile = flag.String("nss_log_path", "nss_key.log", "")
+	nssLogFile = flag.String("nss_log_path", "pre-master-key.log", "")
 
 	disableCompression = flag.Bool("disable-compression", false, "")
 	disableKeepAlives  = flag.Bool("disable-keepalive", false, "")
@@ -85,6 +85,7 @@ Options:
   -a  Basic authentication, username:password.
   -x  HTTP Proxy address as host:port.
   -h2 Enable HTTP/2.
+  -nss_log_path log tls pre-master key
 
   -host	HTTP Host header.
 
@@ -197,8 +198,8 @@ func main() {
 	}
 
 	var writer *requester.InnerWriter
-	if nssLogFile != "" {
-		writer = requester.NewInnerWriter(nssLogFile)
+	if *nssLogFile != "" {
+		writer = requester.NewInnerWriter(*nssLogFile)
 		if err := writer.Init(); err != nil {
 			errAndExit(err.Error())
 		}
